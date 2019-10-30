@@ -9,7 +9,7 @@ dependencies:
   zip_code_jp: ^1.0.0
 ```
 
-### Install it
+### 2. Install it
 
 with pub:
 
@@ -23,7 +23,7 @@ with Flutter:
 $ flutter pub get
 ```
 
-3. Import it
+### 3. Import it
 
 ```
 import 'package:zip_code_jp/zip_code_jp.dart';
