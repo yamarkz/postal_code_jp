@@ -19,8 +19,8 @@ class JapanPost {
   };
 
   static void update() async {
-    await downloadAll();
-    await importAll();
+    downloadAll();
+    importAll();
 
     await File('../../data/current_month')
         .writeAsString(DateFormat.yM().format(DateTime.now()));
