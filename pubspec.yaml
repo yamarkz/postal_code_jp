@@ -1,5 +1,5 @@
 name: zip_code_jp
-description: A new Flutter package.
+description: A dart package for Japan Post official zip code search and update.
 version: 0.0.1
 author: Kazuki Yamaguchi <y.kazuki0614n@gmail.com>
 homepage: https://github.com/yamarkz/zip_code_jp
