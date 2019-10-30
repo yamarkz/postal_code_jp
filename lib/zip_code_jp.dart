@@ -34,7 +34,8 @@ class ZipCodeJp {
           .toList();
     } else {
       return addressesArray
-          .map((addressParam) => extendedAddressFrom(addressParam, opt: {}))
+          .map((addressParam) =>
+              extendedAddressFrom(addressParam, opt: {'prefecture_code': true}))
           .toList();
     }
   }
