@@ -1,5 +1,9 @@
 # zip_code_jp
 
+A dart package for Japan Post official zip code search and update.
+
+Inspired by  [rinkei/jipcode](https://github.com/rinkei/jipcode).
+
 ## Installation
 
 ### 1. Depend on it
@@ -40,4 +44,15 @@ await ZipCodeJp.locate('1600022');
 
 ### Update
 
+日本郵便の郵便番号データを毎月アップデートします (予定)
+最新のデータを利用したい場合は、パッケージのバージョンをアップデートしてください。
+
 update package
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b new_feature_branch`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin new_feature_branch`)
+5. Create new Pull Request
