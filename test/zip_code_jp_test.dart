@@ -1,16 +1,16 @@
 import 'dart:io';
 
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 import 'package:zip_code_jp/zip_code_jp.dart';
 
 void main() {
   setUp(() async {
-    File('${ZipCodeJp.zipCodePath}/000.csv').writeAsStringSync(
+    File('${ZipCodeJp.latestZipCodePath}/000.csv').writeAsStringSync(
         "0000001,HOGE県,hoge市,ほげ\n0000001,FUGA県,fuga市,ふが\n0000002,PIYO県,piyo市,ぴよ");
   });
 
   tearDown(() async {
-    File('${ZipCodeJp.zipCodePath}/000.csv').delete();
+    File('${ZipCodeJp.latestZipCodePath}/000.csv').delete();
   });
 
   group('test ZipCodeJp', () {

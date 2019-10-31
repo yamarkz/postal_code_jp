@@ -6,9 +6,9 @@ import 'dart:io';
 import 'package:yaml/yaml.dart';
 
 class ZipCodeJp {
-  static final zipCodePath = '../data/latest';
+  static final latestZipCodePath = 'data/latest';
   static final prefectureCode =
-      loadYaml(File('../data/prefecture_code.yml').readAsStringSync());
+      loadYaml(File('data/prefecture_code.yml').readAsStringSync());
   static final zipCodeRegExp = RegExp('\d{7}');
 
   static Future<List<Map<String, dynamic>>> locate(zipCode, {opt}) async {
@@ -16,7 +16,7 @@ class ZipCodeJp {
       throw ArgumentError('The post code must be 7 character');
     }
 
-    final file = File("$zipCodePath/${zipCode.substring(0, 3)}.csv");
+    final file = File("$latestZipCodePath/${zipCode.substring(0, 3)}.csv");
     if (file == null) return [];
 
     final lines =

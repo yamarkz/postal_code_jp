@@ -5,7 +5,8 @@ import 'package:csv/csv.dart';
 import 'package:intl/intl.dart';
 
 class JapanPost {
-  static final zipCodePath = '../../data/latest';
+  static final latestZipCodePath = 'data/latest';
+  static final previousZipCodePath = 'data/previous';
   static final zipCodeUrls = {
     'general':
         'https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip',
@@ -22,7 +23,7 @@ class JapanPost {
     downloadAll();
     importAll();
 
-    await File('../../data/current_month')
+    await File('data/current_month')
         .writeAsString(DateFormat.yM().format(DateTime.now()));
   }
 
@@ -32,7 +33,7 @@ class JapanPost {
       final request = await HttpClient().getUrl(Uri.parse(entry.value));
       final response = await request.close();
       response.listen((d) => _downloadData.addAll(d), onDone: () {
-        File("../../data/${entry.key}.zip").writeAsBytes(_downloadData);
+        File("data/${entry.key}.zip").writeAsBytes(_downloadData);
       });
       print("download ${entry.key} done");
     });
@@ -41,11 +42,11 @@ class JapanPost {
 
   static void importAll() async {
     try {
-      final directory = Directory(zipCodePath);
+      final directory = Directory(latestZipCodePath);
       if (await directory.exists()) {
-        await directory.rename('../../data/previous');
+        await directory.rename(previousZipCodePath);
       }
-      await Directory(zipCodePath).create();
+      await Directory(latestZipCodePath).create();
 
       final generalZipCodes = await _unpack('general');
       _import(generalZipCodes, _generalFormat);
@@ -53,26 +54,26 @@ class JapanPost {
       final companyZipCodes = await _unpack('company');
       _import(companyZipCodes, _companyFormat);
 
-      Directory('../../data/previous').deleteSync(recursive: true);
+      Directory(previousZipCodePath).deleteSync(recursive: true);
     } catch (e) {
-      Directory(zipCodePath).deleteSync(recursive: true);
-      final directory = Directory('../../data/previous');
+      Directory(latestZipCodePath).deleteSync(recursive: true);
+      final directory = Directory(previousZipCodePath);
       if (await directory.exists()) {
-        await directory.rename(zipCodePath);
+        await directory.rename(latestZipCodePath);
       }
       print(e);
     }
   }
 
   static Future<String> _unpack(String type) async {
-    final file = File('../../data/$type.zip');
+    final file = File('data/$type.zip');
     if (file == null) downloadAll();
     final archive = ZipDecoder().decodeBytes(file.readAsBytesSync());
-    File('../../data/$type.csv')
+    File('data/$type.csv')
       ..createSync(recursive: true)
       ..writeAsBytesSync(archive.findFile(zipCodeFiles[type]).content);
     final result = await Process.run(
-        'iconv', ['-f', 'Shift_JIS', '-t', 'utf8', '../../data/$type.csv']);
+        'iconv', ['-f', 'Shift_JIS', '-t', 'utf8', 'data/$type.csv']);
     return result.stdout;
   }
 
@@ -106,7 +107,7 @@ class JapanPost {
         address[3] = town.replaceAll(RegExp('（.*?）'), '');
       }
 
-      final filePath = "$zipCodePath/${address[0].substring(0, 3)}.csv";
+      final filePath = "$latestZipCodePath/${address[0].substring(0, 3)}.csv";
       File(filePath)
           .writeAsStringSync("${address.join(',')}\n", mode: FileMode.append);
     }

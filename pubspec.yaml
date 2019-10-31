@@ -8,15 +8,10 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
   csv: ^4.0.3
   yaml: ^2.2.0
   intl: ^0.16.0
   archive: ^2.0.10
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-
-flutter:
+  test: ^1.9.3
