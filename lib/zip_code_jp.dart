@@ -10,6 +10,7 @@ class ZipCodeJp {
   static final prefectureCode =
       loadYaml(File('../data/prefecture_code.yml').readAsStringSync());
   static final zipCodeRegExp = RegExp('\d{7}');
+
   static Future<List<Map<String, dynamic>>> locate(zipCode, {opt}) async {
     if (zipCodeRegExp.hasMatch(zipCode)) {
       throw ArgumentError('The post code must be 7 character');
@@ -19,7 +20,7 @@ class ZipCodeJp {
     if (file == null) return [];
 
     final lines =
-        await file.openRead().transform(utf8.decoder).transform(LineSplitter());
+        file.openRead().transform(utf8.decoder).transform(LineSplitter());
 
     final fields = List<List<String>>();
     await for (var line in lines) {

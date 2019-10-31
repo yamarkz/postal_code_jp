@@ -31,7 +31,7 @@ class JapanPost {
       final _downloadData = List<int>();
       final request = await HttpClient().getUrl(Uri.parse(entry.value));
       final response = await request.close();
-      await response.listen((d) => _downloadData.addAll(d), onDone: () {
+      response.listen((d) => _downloadData.addAll(d), onDone: () {
         File("../../data/${entry.key}.zip").writeAsBytes(_downloadData);
       });
       print("download ${entry.key} done");
@@ -48,10 +48,10 @@ class JapanPost {
       await Directory(zipCodePath).create();
 
       final generalZipCodes = await _unpack('general');
-      await _import(generalZipCodes, _generalFormat);
+      _import(generalZipCodes, _generalFormat);
 
       final companyZipCodes = await _unpack('company');
-      await _import(companyZipCodes, _companyFormat);
+      _import(companyZipCodes, _companyFormat);
 
       Directory('../../data/previous').deleteSync(recursive: true);
     } catch (e) {
