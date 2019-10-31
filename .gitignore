@@ -30,6 +30,9 @@
 build/
 pubspec.lock
 
+data/company.zip
+data/general.zip
+
 # Android related
 **/android/**/gradle-wrapper.jar
 **/android/.gradle
