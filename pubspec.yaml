@@ -1,6 +1,6 @@
 name: zip_code_jp
 description: A dart package for Japan Post official zip code search and update.
-version: 0.0.1
+version: 1.0.0
 author: Kazuki Yamaguchi <y.kazuki0614n@gmail.com>
 homepage: https://github.com/yamarkz/zip_code_jp
 
