@@ -1,22 +1,23 @@
-library zip_code_jp;
+library postal_code_jp;
 
 import 'dart:convert';
 import 'dart:io';
 
 import 'package:yaml/yaml.dart';
 
-class ZipCodeJp {
-  static final latestZipCodePath = 'data/latest';
+class PostalCodeJp {
+  static final latestPostalCodePath = 'data/latest';
   static final prefectureCode =
       loadYaml(File('data/prefecture_code.yml').readAsStringSync());
-  static final zipCodeRegExp = RegExp('\d{7}');
+  static final postalCodeRegExp = RegExp('\d{7}');
 
-  static Future<List<Map<String, dynamic>>> locate(zipCode, {opt}) async {
-    if (zipCodeRegExp.hasMatch(zipCode)) {
+  static Future<List<Map<String, dynamic>>> locate(postalCode, {opt}) async {
+    if (postalCodeRegExp.hasMatch(postalCode)) {
       throw ArgumentError('The post code must be 7 character');
     }
 
-    final file = File("$latestZipCodePath/${zipCode.substring(0, 3)}.csv");
+    final file =
+        File("$latestPostalCodePath/${postalCode.substring(0, 3)}.csv");
     if (file == null) return [];
 
     final lines =
@@ -27,7 +28,7 @@ class ZipCodeJp {
       fields.add(line.split(','));
     }
 
-    var addressesArray = fields.where((address) => address[0] == zipCode);
+    var addressesArray = fields.where((address) => address[0] == postalCode);
 
     if (opt == null) {
       return addressesArray
@@ -43,7 +44,7 @@ class ZipCodeJp {
 
   static Map<String, dynamic> basicAddressFrom(addressParam) {
     return {
-      'zipcode': addressParam[0],
+      'postal_code': addressParam[0],
       'prefecture': addressParam[1],
       'city': addressParam[2],
       'town': addressParam[3],

@@ -1,6 +1,6 @@
-# zip_code_jp
+# postal_code_jp
 
-A dart package for Japan Post official zip code search and update.
+A dart package for Japan Post official postal code, a.k.a zip code, search and update.
 
 Inspired by  [rinkei/jipcode](https://github.com/rinkei/jipcode).
 
@@ -10,7 +10,7 @@ Inspired by  [rinkei/jipcode](https://github.com/rinkei/jipcode).
 
 ```
 dependencies:
-  zip_code_jp: ^1.0.0
+  postal_code_jp: ^1.0.0
 ```
 
 ### 2. Install it
@@ -30,7 +30,7 @@ $ flutter pub get
 ### 3. Import it
 
 ```
-import 'package:zip_code_jp/zip_code_jp.dart';
+import 'package:postal_code_jp/postal_code_jp.dart';
 ```
 
 ## Usage
@@ -38,8 +38,8 @@ import 'package:zip_code_jp/zip_code_jp.dart';
 ### Search
 
 ```
-await ZipCodeJp.locate('1600022');
-// => [{'zipcode': '1600022', 'prefecture': '東京都', 'city': '新宿区', 'town': '新宿'}]
+await PostalCodeJp.locate('1600022');
+// => [{'postal_code': '1600022', 'prefecture': '東京都', 'city': '新宿区', 'town': '新宿'}]
 ```
 
 ### Update
