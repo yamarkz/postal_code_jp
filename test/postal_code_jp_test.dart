@@ -13,20 +13,20 @@ void main() {
     File('${PostalCodeJp.latestPostalCodePath}/000.csv').delete();
   });
 
-  group('test ZipCodeJp', () {
+  group('test PostalCodeJp', () {
     test('.locate normally', () async {
       final address = await PostalCodeJp.locate('0000001');
       expect(
         address,
         equals([
           {
-            'zipcode': '0000001',
+            'postal_code': '0000001',
             'prefecture': 'HOGE県',
             'city': 'hoge市',
             'town': 'ほげ'
           },
           {
-            'zipcode': '0000001',
+            'postal_code': '0000001',
             'prefecture': 'FUGA県',
             'city': 'fuga市',
             'town': 'ふが'
