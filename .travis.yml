@@ -19,6 +19,8 @@ matrix:
     - dart: stable
       dart_task:
         dartanalyzer: --fatal-warnings .
+    - dart: stable
+      dart_task: dartfmt
 
 cache:
   directories:
