@@ -6,10 +6,20 @@ dart:
   - dev
   - stable
 
-cache:
-  directories:
-    - $HOME/.pub-cache
-
 dart_task:
   - test
 
+matrix:
+  include:
+    - dart: dev
+      dart_task: dartfmt
+    - dart: dev
+      dart_task:
+        dartanalyzer: --fatal-warnings --fatal-hints .
+    - dart: stable
+      dart_task:
+        dartanalyzer: --fatal-warnings .
+
+cache:
+  directories:
+    - $HOME/.pub-cache
