@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+if [ `cat data/current_month` = `date "+%Y%m"` ]; then
+  exit 0
+fi
+
+git checkout master
+
+dart lib/src/main.dart
+
+if [ $? = "1" ]; then
+  exit 1
+fi
+
+git add data/latest data/current_month
+
+if git commit -m `date "+%Y/%m/%d Update data"`; then
+  pubver bump patch
+  git add pubspec.yaml
+  git commit -m "Update `pubver get | sed -e "s/^\(.*: \)//"`"
+
+  openssl aes-256-cbc -K $encrypted_d3d6d356b40c_key -iv $encrypted_d3d6d356b40c_iv -in .travis_rsa.enc -out ~/.ssh/id_rsa -d
+  chmod 600 ~/.ssh/id_rsa
+  git remote set-url origin git@github.com:yamarkz/postal_code_jp.git
+  git push origin master
+fi
+
