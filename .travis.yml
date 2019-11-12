@@ -1,19 +1,14 @@
 language: dart
-
-sudo: false
-
 dart:
   - stable
-
+sudo: false
 dart_task:
-  - test
+  - test: --platform vm
   - dartanalyzer: --fatal-warnings .
   - dartfmt
-
 script:
   - pub global activate pubspec_version
   - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bin/update; fi
-
 cache:
   directories:
     - $HOME/.pub-cache
