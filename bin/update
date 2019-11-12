@@ -17,7 +17,7 @@ git add data/latest data/current_month
 if git commit -m `date "+%Y年%m月%d日現在の郵便番号データに更新"`; then
   git add pubspec.yaml
 
-  openssl aes-256-cbc -K $encrypted_3597653ee3ea_key -iv $encrypted_3597653ee3ea_iv -in .travis_rsa.enc -out ~/.ssh/id_rsa -d
+  openssl aes-256-cbc -K $encrypted_d3d6d356b40c_key -iv $encrypted_d3d6d356b40c_iv -in .travis_rsa.enc -out ~/.ssh/id_rsa -d
   chmod 600 ~/.ssh/id_rsa
   git remote set-url origin git@github.com:yamarkz/postal_code_jp.git
   git push origin master
