@@ -23,6 +23,8 @@ matrix:
       dart_task: dartfmt
     - dart: stable
       dart_task: pub global activate pubspec_version
+    - dart: stable
+      dart_tasl: pubver bump patch
 cache:
   directories:
     - $HOME/.pub-cache
