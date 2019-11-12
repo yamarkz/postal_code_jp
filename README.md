@@ -2,6 +2,8 @@
 
 [![pub package](https://img.shields.io/pub/v/postal_code_jp.svg)](https://pub.dev/packages/postal_code_jp)
 
+[![Build Status](https://travis-ci.org/yamarkz/postal_code_jp.svg?branch=master)](https://travis-ci.org/yamarkz/postal_code_jp)
+
 A dart package for Japan Post official postal code, a.k.a zip code, search and update.
 
 Inspired by  [rinkei/jipcode](https://github.com/rinkei/jipcode).
