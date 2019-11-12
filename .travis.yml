@@ -3,28 +3,17 @@ language: dart
 sudo: false
 
 dart:
-  - dev
   - stable
 
 dart_task:
   - test
+  - dartanalyzer: --fatal-warnings .
+  - dartfmt
 
-matrix:
-  include:
-    - dart: dev
-      dart_task: dartfmt
-    - dart: dev
-      dart_task:
-        dartanalyzer: --fatal-warnings --fatal-hints .
-    - dart: stable
-      dart_task:
-        dartanalyzer: --fatal-warnings .
-    - dart: stable
-      dart_task: dartfmt
-    - dart: stable
-      dart_task: pub global activate pubspec_version
-    - dart: stable
-      dart_tasl: pubver bump patch
+script:
+  - pub global activate pubspec_version
+  - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bin/update; fi
+
 cache:
   directories:
     - $HOME/.pub-cache
