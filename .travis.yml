@@ -21,7 +21,8 @@ matrix:
         dartanalyzer: --fatal-warnings .
     - dart: stable
       dart_task: dartfmt
-
+    - dart: stable
+      dart_task: pub global activate pubspec_version
 cache:
   directories:
     - $HOME/.pub-cache
