@@ -1,4 +1,4 @@
-# postal_code_jp
+# 📮postal_code_jp
 
 [![pub package](https://img.shields.io/pub/v/postal_code_jp.svg)](https://pub.dev/packages/postal_code_jp)
 
