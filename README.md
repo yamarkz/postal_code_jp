@@ -14,7 +14,7 @@ Inspired by  [rinkei/jipcode](https://github.com/rinkei/jipcode).
 
 ```
 dependencies:
-  postal_code_jp: ^1.0.0
+  postal_code_jp: ^1.0.1
 ```
 
 ### 2. Install it
@@ -48,11 +48,9 @@ await PostalCodeJp.locate('1600022');
 
 ### Update
 
-日本郵便の郵便番号データを毎月アップデートします (予定)
+日本郵便の郵便番号データを毎月アップデートします
 
 最新のデータを利用したい場合は、パッケージのバージョンをアップデートしてください。
-
-update package
 
 ## Contributing
 
