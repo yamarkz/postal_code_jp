@@ -31,7 +31,9 @@ build/
 pubspec.lock
 
 data/company.zip
+data/company.csv
 data/general.zip
+data/general.csv
 
 # Android related
 **/android/**/gradle-wrapper.jar
