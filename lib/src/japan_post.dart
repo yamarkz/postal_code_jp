@@ -19,15 +19,15 @@ class JapanPost {
     'company': 'JIGYOSYO.CSV',
   };
 
-  static void update() async {
-    downloadAll();
-    importAll();
+  static Future<void> update() async {
+    await downloadAll();
+    await importAll();
 
     await File('data/current_month')
         .writeAsString(DateFormat.yM().format(DateTime.now()));
   }
 
-  static void downloadAll() async {
+  static Future<void> downloadAll() async {
     await Future.forEach(postalCodeUrls.entries, (entry) async {
       final _downloadData = List<int>();
       final request = await HttpClient().getUrl(Uri.parse(entry.value));
@@ -40,7 +40,7 @@ class JapanPost {
     print('download All done');
   }
 
-  static void importAll() async {
+  static Future<void> importAll() async {
     try {
       final directory = Directory(latestPostalCodePath);
       if (await directory.exists()) {
