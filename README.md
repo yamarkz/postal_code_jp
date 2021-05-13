@@ -46,12 +46,6 @@ await PostalCodeJp.locate('1600022');
 // => [{'postal_code': '1600022', 'prefecture': '東京都', 'city': '新宿区', 'town': '新宿'}]
 ```
 
-### Update
-
-日本郵便の郵便番号データを毎月アップデートします
-
-最新のデータを利用したい場合は、パッケージのバージョンをアップデートしてください。
-
 ## Contributing
 
 1. Fork it
