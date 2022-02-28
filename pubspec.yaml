@@ -1,10 +1,10 @@
 name: postal_code_jp
 author: Kazuki Yamaguchi <y.kazuki0614n@gmail.com>
-version: 1.1.0
+version: 1.2.0
 homepage: https://github.com/yamarkz/postal_code_jp
 description: A dart package for Japan Post official postal code, a.k.a zip code, search and update.
 environment: 
-  sdk: '>=2.1.0 <3.0.0'
+  sdk: '>=2.14.0 <3.0.0'
 dependencies: 
   csv: ^5.0.0
   yaml: ^3.1.0
