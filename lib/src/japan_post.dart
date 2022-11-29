@@ -73,7 +73,7 @@ class JapanPost {
       ..createSync(recursive: true)
       ..writeAsBytesSync(archive.findFile(postalCodeFiles[type]!)!.content);
     final result = await Process.run(
-        'iconv', ['-f', 'Shift_JIS', '-t', 'utf8', 'data/$type.csv']);
+        'iconv', ['-f', 'Shift_JIS', '-t', 'utf-8', 'data/$type.csv']);
     return result.stdout;
   }
 
