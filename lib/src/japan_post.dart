@@ -29,7 +29,7 @@ class JapanPost {
 
   static Future<void> downloadAll() async {
     await Future.forEach(postalCodeUrls.entries, (dynamic entry) async {
-      final _downloadData = List<int>();
+      final _downloadData = <int>[];
       final request = await HttpClient().getUrl(Uri.parse(entry.value));
       final response = await request.close();
       response.listen((d) => _downloadData.addAll(d), onDone: () {
@@ -67,7 +67,7 @@ class JapanPost {
 
   static Future<String?> _unpack(String type) async {
     final file = File('data/$type.zip');
-    if (file == null) downloadAll();
+    if (file == false) downloadAll();
     final archive = ZipDecoder().decodeBytes(file.readAsBytesSync());
     File('data/$type.csv')
       ..createSync(recursive: true)
