@@ -18,12 +18,12 @@ class PostalCodeJp {
 
     final file =
         File("$latestPostalCodePath/${postalCode.substring(0, 3)}.csv");
-    if (file == null) return [];
+    if (file == false) return [];
 
     final lines =
         file.openRead().transform(utf8.decoder).transform(LineSplitter());
 
-    final fields = List<List<String>>();
+    final fields = <List<String>>[];
     await for (var line in lines) {
       fields.add(line.split(','));
     }
@@ -51,7 +51,7 @@ class PostalCodeJp {
     };
   }
 
-  static Map<String, dynamic> extendedAddressFrom(addressParam, {opt}) {
+  static Map<String, dynamic> extendedAddressFrom(addressParam, {required opt}) {
     Map<String, dynamic> address = basicAddressFrom(addressParam);
     if (opt.containsKey('prefecture_code')) {
       address['prefecture_code'] = prefectureCode.keys
